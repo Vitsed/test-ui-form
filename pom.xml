@@ -8,7 +8,7 @@
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <selenide.version>5.23.0</selenide.version>
+    <selenide.version>6.9.0</selenide.version>
   </properties>
 
   <dependencies>

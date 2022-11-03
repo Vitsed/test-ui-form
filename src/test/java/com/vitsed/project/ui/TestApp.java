@@ -2,9 +2,9 @@ package com.vitsed.project.ui;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.vitsed.project.ui.pagewidgets.LoginForm;
-import com.vitsed.project.ui.pagewidgets.MainPage;
-import com.vitsed.project.ui.pagewidgets.PhysicalModal;
+import com.vitsed.project.ui.pages.LoginForm;
+import com.vitsed.project.ui.pages.MainPage;
+import com.vitsed.project.ui.pages.PhysicalModal;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,6 +22,7 @@ public class TestApp {
                                    new AllureSelenide()
                                            .screenshots(false)
                                            .savePageSource(true));
+
     }
 
 

@@ -1,4 +1,4 @@
-package com.vitsed.project.ui.pagewidgets;
+package com.vitsed.project.ui.pages;
 
 import com.codeborne.selenide.*;
 

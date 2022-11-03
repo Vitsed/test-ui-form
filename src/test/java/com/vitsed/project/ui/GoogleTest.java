@@ -1,6 +1,6 @@
 package com.vitsed.project.ui;
 
-import com.vitsed.project.ui.pagewidgets.*;
+import com.vitsed.project.ui.pages.*;
 
 import org.junit.jupiter.api.*;
 
