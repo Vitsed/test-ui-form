@@ -1,20 +1,21 @@
-package com.vitsed.project.ui.pages;
+package com.vitsed.project.ui.pages.modal;
 
 import com.codeborne.selenide.SelenideElement;
+import com.vitsed.project.ui.pages.AbstractPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PhysicalModal {
+public class PhysicalModal extends AbstractPage {
 
-    //Elements
     SelenideElement window = $(By.id("physicalPersonEditForm"));
     SelenideElement modalBirthPlace = $x("div[@role='dialog'][.//h4[text()='Место рождения']");
 
     SelenideElement inputFirstName = $(By.cssSelector("div[selectedobject='person.Firstname']>div>input"));
 
-    SelenideElement inputLastName = $(By.cssSelector("div[selectedobject='person.Surname']>div>input"));
+    SelenideElement inputLastName = $("div[selectedobject='person.Surname']>div>input");
 
     SelenideElement inputPersonInn = $("input[ng-model='person.Inn']");
     SelenideElement inputPersonBirthday = $("input[ng-model='person.BirthDate']");
@@ -23,49 +24,58 @@ public class PhysicalModal {
     SelenideElement inputBirthPlace = $("*[field-name='person.Birthplace'] > div > input");
     SelenideElement inputRegistrationAddress = $("address-control[field-var='person.FullAddress'] > div > input");
 
-    //Actions
+    @Step("Ввести имя")
     public void inputFirstName(String firstName) {
         inputFirstName.setValue(firstName);
+        makeScreenshot();
     }
 
+    @Step("Ввести фамилию")
     public void inputLastName(String lastName) {
         inputLastName.setValue(lastName);
+        makeScreenshot();
     }
 
+    @Step("Ввести ИНН")
     public void inputPersonInn(String inn) {
         inputPersonInn.setValue(inn);
+        makeScreenshot();
     }
 
+    @Step("Ввести день рождения")
     public void inputBirthday(String birthday) {
-        inputPersonBirthday.sendKeys(birthday);
-        inputPersonBirthday.pressEnter();
+        inputPersonBirthday.setValue(birthday).pressEnter();
+        makeScreenshot();
     }
 
+    @Step("Выбрать пол")
     public void choosePersonSex(String sex) {
-        // select option doesn't work correctly cuz instead of value is using label also select tag invisible
         choosePersonSex.click();
-        SelenideElement input = choosePersonSex.$("div").$("input");
+        SelenideElement input = choosePersonSex.$("div input");
         input.shouldBe(visible).sendKeys(sex);
         input.pressEnter();
+        makeScreenshot();
     }
 
+    @Step("Ввести гражданство")
     public void choosePersonCitizenship(String citizenship) {
-        // select option doesn't work correctly cuz instead of value is using label also select tag invisible
         choosePersonCitizenship.click();
-        SelenideElement input = choosePersonCitizenship.$("div").$("input");
+        SelenideElement input = choosePersonCitizenship.$("div input");
         input.shouldBe(visible).sendKeys(citizenship);
         input.pressEnter();
+        makeScreenshot();
     }
 
+    @Step("Выбрать место рождения")
     public void setBirthPlace(String text) {
         inputBirthPlace.click();
         SelenideElement ta = $("textarea[ng-model='address']");
         ta.sendKeys(text);
         $x("//button[text()='OK']").click();
+        makeScreenshot();
     }
 
-    public void setRegistrationAddress(String registration) {
+    public void enterRegistrationAddress() {
         inputRegistrationAddress.click();
-        sleep(3000);
     }
 }
