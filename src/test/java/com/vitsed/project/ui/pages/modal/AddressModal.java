@@ -7,7 +7,6 @@ import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -18,8 +17,6 @@ public class AddressModal extends AbstractPage {
     SelenideElement regions = $("*[list='regions']>div");
 
     SelenideElement loader = $("h4[ng-bind='caption']");
-
-    SelenideElement buttonOk = $("div.modal-footer button:nth-child(2)");
 
     @Step("Ввести индекс")
     public void setZipcode(String zip) {
@@ -33,9 +30,4 @@ public class AddressModal extends AbstractPage {
         makeScreenshot();
     }
 
-    @Step("Нажать кнопку ок")
-    public void pressButtonOk() {
-        // русская раскладка
-        buttonOk.shouldHave(text("ОК")).click();
-    }
 }

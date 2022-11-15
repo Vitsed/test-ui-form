@@ -92,6 +92,7 @@ public class TestApp {
         addressModal.setZipcode("111000");
         addressModal.setRegions("МОСКВА");
         addressModal.pressButtonOk();
+        physicalModal.pressButtonOk();
         sleep(3000);
     }
 
